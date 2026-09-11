@@ -23,7 +23,8 @@ set -Ee
 # [
 GET_LATEST_FIRMWARE()
 {
-    curl -s --retry 5 --retry-delay 5 "https://fota-cloud-dn.ospserver.net/firmware/$REGION/$MODEL/version.xml" \
+    curl -s --retry 5 --retry-delay 5 -A "samsung $MODEL SyncML DM Client" \
+        "https://fota-cloud-dn.ospserver.net/firmware/$REGION/$MODEL/version.xml" \
         | grep latest | sed 's/^[^>]*>//' | sed 's/<.*//'
 }
 #]
@@ -80,6 +81,9 @@ case "$1" in
         ;;
     "prebuilts/samsung/p3sxxx")
         FIRMWARE="SM-G998B/AUT/352731458300849"
+        ;;
+    "prebuilts/samsung/b0sxxx")
+        FIRMWARE="SM-S908B/EUX/353074281234565"
         ;;
     "prebuilts/samsung/dm3qxxx")
         FIRMWARE="SM-S918B/EUX/350196551234562"
