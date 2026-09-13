@@ -90,8 +90,24 @@ system/app/VoiceAccess
 system/etc/sysconfig/feature-a11y-preload-voacc.xml
 "
 
-# Optional YouTube preload from the source firmware.
+# Optional Google preload components already supported by the global UN1CA debloat.
 PRODUCT_DEBLOAT+="
 
 app/YouTube
+app/DuoStub
+app/AssistantShell
+app/BardShell
+app/Gmail2
+app/Maps
+app/Chrome
+overlay/GmsConfigOverlaySearchSelector.apk
+priv-app/SearchSelector
+"
+
+# S10+ has no S Pen hardware; remove S Pen-specific user applications only.
+SYSTEM_DEBLOAT+="
+
+system/priv-app/AirCommand
+system/priv-app/AirReadingGlass
+system/priv-app/SmartEye
 "
