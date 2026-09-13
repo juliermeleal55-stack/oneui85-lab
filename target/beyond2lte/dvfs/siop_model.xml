@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<siop_document>
+    <overheatcontrol>
+        <complex>
+            <LTB formula="AP*BAT" temp="520.420" />
+            <GDM formula="AP*BAT" temp="475.400" />
+            <GDMLTB formula="AP*BAT" temp="470.430" />
+            <SS formula="AP*BAT*PA" temp="580.450.590" />
+        </complex>
+    </overheatcontrol>
+
+    <modelsettings>
+        <sensors>
+            <LTB_SENSOR type="(PALM*LIGHT*FLICKER)+(POSITION*LIGHT*FLICKER)" />
+        </sensors>
+    </modelsettings>
+
+    <components>
+        <component name="AP" tempType="LRP">
+            <limiter name="CPUFreqMax" step="0" temp="350:380:450:470" value="-1:1378000:1378000:1248000" />
+            <limiter name="GPUFreqMax" step="0" temp="350:380:450:470" value="-1:377000:377000:260000" />
+        </component>
+
+        <component name="DISPLAY" tempType="LRP">
+            <limiter name="Brightness" temp="390" gap="20" value="-1:201:144" />
+        </component>
+
+        <component name="WIFI" tempType="LRP">
+            <limiter name="SmartBonding" temp="440" value="-1:1" />
+        </component>
+
+        <component name="CAM" tempType="LRP">
+            <limiter name="VideoLowPowerMode" temp="350" value="-1:1" />
+        </component>
+    </components>
+
+    <scenarios>
+        <scenario name="Heavyuser" tempType="LRP" priority="1">
+            <limiter name="CPUFreqMax" cond="for_temporary" temp="550" value="-1" />
+            <limiter name="GPUFreqMax" cond="for_temporary" temp="430:480" value="-1:572000" />
+        </scenario>
+
+        <scenario name="AppStart" tempType="AP" priority="2">
+            <limiter name="CPUFreqMax" cond="for_temporary" temp="550:600:620" value="-1:1378000:1248000" />
+            <limiter name="GPUFreqMax" cond="for_temporary" temp="550:600" value="-1:377000" />
+        </scenario>
+
+        <scenario name="CameraRecording!Camera_recording,Camera_recordingDual" tempType="LRP" priority="1">
+            <limiter name="CPUFreqMax" step="0" temp="350:380" value="-1:1560000" />
+            <limiter name="GPUFreqMax" step="0" temp="350:380" value="-1:433000" />
+            <limiter name="Brightness" temp="330:350:410:430" value="-1:255:201:144" />
+        </scenario>
+
+        <scenario name="Navigation" tempType="LRP">
+            <limiter name="Brightness" temp="410" gap="20" value="169:144" />
+        </scenario>
+
+        <scenario name="MultiWindow" tempType="LRP" priority="1">
+            <limiter name="CPUFreqMax" step="0" temp="350:380:410:430" value="-1:1378000:1378000:1040000" />
+        </scenario>
+    </scenarios>
+</siop_document>
