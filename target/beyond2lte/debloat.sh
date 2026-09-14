@@ -136,3 +136,18 @@ system/app/ThemeCenter
 system/priv-app/ThemeStore
 system/priv-app/ThemeCenter
 "
+
+# Additional non-boot user applications.
+# These are convenience applications and are not required for the Android
+# framework, SystemUI, telephony, connectivity, camera or biometric stack.
+SYSTEM_DEBLOAT+="
+
+system/app/SamsungHealth
+system/app/SamsungNotes
+system/app/SamsungCalculator
+system/app/SamsungVoiceRecorder
+system/app/SamsungWeather
+system/app/GalaxyStore
+system/priv-app/SamsungHealth
+system/priv-app/SamsungNotes
+"
