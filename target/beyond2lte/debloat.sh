@@ -111,3 +111,28 @@ system/priv-app/AirCommand
 system/priv-app/AirReadingGlass
 system/priv-app/SmartEye
 "
+
+# Additional optional user applications/services.
+# These are not required for Android framework boot, telephony, connectivity,
+# SystemUI, camera, biometrics or the core Samsung setup.
+SYSTEM_DEBLOAT+="
+
+system/app/SamsungMembers
+system/app/SamsungMusic
+system/app/SamsungShop
+system/app/SamsungInternet
+system/app/SmartSwitch
+system/priv-app/SmartSwitchAssistant
+system/priv-app/SamsungMembers
+system/priv-app/SamsungMusic
+"
+
+# Optional Samsung customization/theme components.
+# Removing these only drops theme-store functionality; it does not remove
+# SystemUI or the underlying framework.
+SYSTEM_DEBLOAT+="
+
+system/app/ThemeCenter
+system/priv-app/ThemeStore
+system/priv-app/ThemeCenter
+"
