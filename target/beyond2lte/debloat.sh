@@ -151,3 +151,13 @@ system/app/GalaxyStore
 system/priv-app/SamsungHealth
 system/priv-app/SamsungNotes
 "
+
+# Small final round: optional maintenance/promotional applications.
+# Do not remove Device Care dependencies used by the core framework.
+SYSTEM_DEBLOAT+="
+
+system/app/SamsungTips
+system/priv-app/SamsungTips
+system/app/SamsungGlobalGoals
+system/priv-app/SamsungGlobalGoals
+"
