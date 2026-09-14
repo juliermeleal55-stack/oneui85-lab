@@ -161,3 +161,13 @@ system/priv-app/SamsungTips
 system/app/SamsungGlobalGoals
 system/priv-app/SamsungGlobalGoals
 "
+
+# Device-specific removals: hardware/features unavailable on SM-G975F.
+# Keep the core AI framework and Gallery integration; remove optional
+# S24-generation AI calling/translation features that are not needed here.
+SYSTEM_DEBLOAT+="
+
+system/priv-app/CallAssistant
+system/priv-app/Interpreter
+system/priv-app/SmartCallProvider
+"
