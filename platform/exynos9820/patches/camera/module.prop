@@ -1,0 +1,4 @@
+id=camera
+name=Camera compatibility
+ author=oneui85-lab
+description=Preserves native beyond2lte camera stack without foreign device blobs.
