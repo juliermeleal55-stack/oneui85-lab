@@ -1,0 +1,5 @@
+id=vendor_compat
+name=Exynos9820 vendor compatibility
+version=1.0
+author=oneui85-lab
+description=Reserved compatibility module for Exynos9820; no foreign blobs or destructive removals.
