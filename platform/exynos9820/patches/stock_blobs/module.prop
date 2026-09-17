@@ -1,0 +1,4 @@
+id=stock_blobs
+name=Stock blobs compatibility
+author=oneui85-lab
+description=Preserves native beyond2lte blobs without foreign device replacements.
