@@ -1,0 +1,4 @@
+id=audio_compat
+name=Exynos9820 audio compatibility
+author=oneui85-lab
+description=Preserves the native beyond2lte audio HAL stack without deleting vendor audio libraries.
