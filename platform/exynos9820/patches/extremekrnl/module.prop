@@ -1,0 +1,4 @@
+id=extremekrnl
+name=Device kernel handling
+author=oneui85-lab
+description=Preserves the device-specific beyond2lte kernel binaries.
