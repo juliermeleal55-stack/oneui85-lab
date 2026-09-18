@@ -9,7 +9,7 @@
 TARGET_NAME="Galaxy S10+ (Exynos)"
 TARGET_CODENAME="beyond2lte"
 TARGET_ASSERT_MODEL=("SM-G975F")
-TARGET_PLATFORM="exynos2500"
+TARGET_PLATFORM="exynos9820"
 
 # Galaxy S26 FE source firmware base (One UI 9 / Android 17).
 # Brazil unbranded source configuration.
