@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [d2xks]
+        target: [beyond2lte]
 
     steps:
       - name: Checkout repo
@@ -87,7 +87,6 @@ jobs:
           sudo chmod 600 /swapfile
           sudo mkswap /swapfile
           sudo swapon /swapfile
-          # Print swap status to the action log to verify it worked
           sudo swapon --show
 
       - name: Build ROM
@@ -121,13 +120,11 @@ jobs:
             ORIGINAL_DIR=$(pwd)
             cd "$ZIP_DIR"
             split -b 1500m "$ZIP_NAME" "$ZIP_NAME.part."
-
             echo "split_files<<EOF" >> "$GITHUB_OUTPUT"
             for f in "${ZIP_NAME}.part."*; do
               echo "$ORIGINAL_DIR/$ZIP_DIR/$f" >> "$GITHUB_OUTPUT"
             done
             echo "EOF" >> "$GITHUB_OUTPUT"
-
             FILE_LIST=$(ls "${ZIP_NAME}.part."* | tr '\n' ' ')
             echo "file_list=$FILE_LIST" >> "$GITHUB_OUTPUT"
             echo "is_split=true" >> "$GITHUB_OUTPUT"
