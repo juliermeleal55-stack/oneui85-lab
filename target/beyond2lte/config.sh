@@ -11,10 +11,10 @@ TARGET_CODENAME="beyond2lte"
 TARGET_ASSERT_MODEL=("SM-G975F")
 TARGET_PLATFORM="exynos9820"
 
-# S10+ stock firmware line. The third field is an IMEI/TAC used by samloader;
-# replace it with a valid TAC/IMEI only in a local build environment if FUS
-# requires it. It is not stored as a personal device identifier here.
-TARGET_FIRMWARE="SM-G975F/ZTO/35035054"
+# S26 FE source firmware base (One UI 9 / Android 17).
+# The target device remains the Galaxy S10+; only the source/base firmware
+# is changed here. Replace the TAC/IMEI placeholder locally if FUS requires it.
+TARGET_FIRMWARE="SM-S741B/ZTA/35035054"
 TARGET_EXTRA_FIRMWARES=("")
 
 # Target vendor baseline: Android 12 / API 31 on the final stock firmware.
