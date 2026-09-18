@@ -1,8 +1,8 @@
 #
 # Galaxy S10+ (Exynos) target configuration
 #
-# The target remains the Galaxy S10+. Source firmware selection must remain
-# separate from target-device firmware and hardware contracts.
+# The target remains the Galaxy S10+. The S26 FE firmware is the source/base;
+# target hardware contracts remain specific to beyond2lte.
 #
 
 TARGET_NAME="Galaxy S10+ (Exynos)"
@@ -10,18 +10,46 @@ TARGET_CODENAME="beyond2lte"
 TARGET_ASSERT_MODEL=("SM-G975F")
 TARGET_PLATFORM="exynos9820"
 
-# Target-device firmware used for target blobs and device compatibility.
-# The S26 FE is the intended source/base firmware, not the target firmware.
+# Source firmware: Galaxy S26 FE (SM-S741B), Brazil ZTO, latest verified build.
+SOURCE_FIRMWARE="SM-S741B/ZTO/34067524"
+SOURCE_EXTRA_FIRMWARES=("")
+SOURCE_API_LEVEL=36
+SOURCE_PRODUCT_FIRST_API_LEVEL=35
+SOURCE_VNDK_VERSION=35
+SOURCE_CODENAME="S26 FE (Exynos 2500)"
+SOURCE_AUDIO_SUPPORT_ACH_RINGTONE=false
+SOURCE_AUDIO_SUPPORT_VIRTUAL_VIBRATION=true
+SOURCE_AUTO_BRIGHTNESS_TYPE="4"
+SOURCE_DISPLAY_CUTOUT_TYPE="center"
+SOURCE_DVFS_CONFIG_NAME="dvfs_policy_default"
+SOURCE_FP_SENSOR_CONFIG="google_touch_display_ultrasonic"
+SOURCE_HAS_HW_MDNIE=true
+SOURCE_HAS_MASS_CAMERA_APP=false
+SOURCE_HAS_QHD_DISPLAY=false
+SOURCE_HFR_DEFAULT_REFRESH_RATE="60"
+SOURCE_HFR_MODE="0"
+SOURCE_HFR_SEAMLESS_BRT="none"
+SOURCE_HFR_SEAMLESS_LUX="none"
+SOURCE_HFR_SUPPORTED_REFRESH_RATE="60"
+SOURCE_IS_ESIM_SUPPORTED=false
+SOURCE_MDNIE_SUPPORTED_MODES="65303"
+SOURCE_MDNIE_WEAKNESS_SOLUTION_FUNCTION="3"
+SOURCE_NFC_CHIP_VENDOR="SLSI"
+SOURCE_SUPPORT_HOTSPOT_6GHZ=true
+SOURCE_SUPPORT_HOTSPOT_DUALAP=true
+SOURCE_SUPPORT_HOTSPOT_ENHANCED_OPEN=true
+SOURCE_SUPPORT_HOTSPOT_WIFI_6=true
+SOURCE_SUPPORT_HOTSPOT_WPA3=true
+SOURCE_SUPPORT_WIFI_7=true
+SOURCE_HAS_SYSTEM_EXT=true
+SOURCE_SUPER_GROUP_NAME="none"
+
+# Target-device firmware and hardware contracts.
 TARGET_FIRMWARE="SM-G975F/ZTO/35035054"
 TARGET_EXTRA_FIRMWARES=("")
-
-# Target device baseline: Galaxy S10+ stock Android 12 / API 31.
 TARGET_API_LEVEL=31
 TARGET_PRODUCT_FIRST_API_LEVEL=28
 TARGET_VNDK_VERSION=31
-
-# The S10+ port uses the ESSI pipeline. Target partition and device contracts
-# remain independent from the source firmware platform.
 TARGET_SINGLE_SYSTEM_IMAGE="essi"
 TARGET_OS_FILE_SYSTEM="ext4"
 TARGET_SUPER_PARTITION_SIZE=0
