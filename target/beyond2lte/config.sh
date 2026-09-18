@@ -1,29 +1,28 @@
 #
 # Galaxy S10+ (Exynos) target configuration
 #
-# This target is intentionally independent from target/d2s. Do not reuse
-# d2s device-specific patches, overlays, VINTF fragments or postinstall logic
-# until they have been validated against beyond2lte.
+# This target remains the Galaxy S10+ device adaptation. The source firmware
+# is supplied by the Galaxy S26 FE and must not be confused with target HALs,
+# kernel, partitions, or device-specific properties.
 #
 
 TARGET_NAME="Galaxy S10+ (Exynos)"
 TARGET_CODENAME="beyond2lte"
 TARGET_ASSERT_MODEL=("SM-G975F")
-TARGET_PLATFORM="exynos9820"
+TARGET_PLATFORM="exynos2500"
 
-# S26 FE source firmware base (One UI 9 / Android 17).
-# The target device remains the Galaxy S10+; only the source/base firmware
-# is changed here. Replace the TAC/IMEI placeholder locally if FUS requires it.
-TARGET_FIRMWARE="SM-S741B/ZTA/35035054"
+# Galaxy S26 FE source firmware base (One UI 9 / Android 17).
+# Brazil unbranded source configuration.
+TARGET_FIRMWARE="SM-S741B/ZTO/35035054"
 TARGET_EXTRA_FIRMWARES=("")
 
-# Target vendor baseline: Android 12 / API 31 on the final stock firmware.
+# Target device baseline: Galaxy S10+ stock Android 12 / API 31.
 TARGET_API_LEVEL=31
 TARGET_PRODUCT_FIRST_API_LEVEL=28
 TARGET_VNDK_VERSION=31
 
-# The S10+ port uses the ESSI pipeline, but its partition/repartition contract
-# must be handled separately from the Note10+ d2s target.
+# The S10+ port uses the ESSI pipeline. Target partition and device contracts
+# remain independent from the source firmware platform.
 TARGET_SINGLE_SYSTEM_IMAGE="essi"
 TARGET_OS_FILE_SYSTEM="ext4"
 TARGET_SUPER_PARTITION_SIZE=0
