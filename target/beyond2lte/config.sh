@@ -1,9 +1,8 @@
 #
 # Galaxy S10+ (Exynos) target configuration
 #
-# This target remains the Galaxy S10+ device adaptation. The source firmware
-# is supplied by the Galaxy S26 FE and must not be confused with target HALs,
-# kernel, partitions, or device-specific properties.
+# The target remains the Galaxy S10+. Source firmware selection must remain
+# separate from target-device firmware and hardware contracts.
 #
 
 TARGET_NAME="Galaxy S10+ (Exynos)"
@@ -11,9 +10,9 @@ TARGET_CODENAME="beyond2lte"
 TARGET_ASSERT_MODEL=("SM-G975F")
 TARGET_PLATFORM="exynos9820"
 
-# Galaxy S26 FE source firmware base (One UI 9 / Android 17).
-# Brazil unbranded source configuration.
-TARGET_FIRMWARE="SM-S741B/ZTO/35035054"
+# Target-device firmware used for target blobs and device compatibility.
+# The S26 FE is the intended source/base firmware, not the target firmware.
+TARGET_FIRMWARE="SM-G975F/ZTO/35035054"
 TARGET_EXTRA_FIRMWARES=("")
 
 # Target device baseline: Galaxy S10+ stock Android 12 / API 31.
