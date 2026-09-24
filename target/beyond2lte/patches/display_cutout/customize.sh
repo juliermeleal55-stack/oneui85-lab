@@ -23,13 +23,13 @@ for RESOURCE in \
     config_mainBuiltInDisplayCutout \
     config_mainBuiltInDisplayCutoutForUDC \
     config_mainBuiltInDisplayCutoutRectApproximation; do
-    rg -q "name=\\"$RESOURCE\\"" "$FRAMEWORK_RES" || ABORT "framework-res.apk is missing $RESOURCE"
+    grep -R -q "name=\\\"$RESOURCE\\\"" "$FRAMEWORK_RES" || { LOGE "framework-res.apk is missing $RESOURCE"; exit 1; }
 done
 for RESOURCE in \
     status_bar_height \
     status_bar_padding_top \
     status_bar_basic_top_margin_without_cutout; do
-    rg -q "name=\\"$RESOURCE\\"" "$SYSTEMUI_RES" || ABORT "SystemUI.apk is missing $RESOURCE"
+    grep -R -q "name=\\\"$RESOURCE\\\"" "$SYSTEMUI_RES" || { LOGE "SystemUI.apk is missing $RESOURCE"; exit 1; }
 done
 
 # Keep SystemUI's own dimensions intact: they describe icon/text layout. The
