@@ -427,6 +427,19 @@ for i in "${FIRMWARES[@]}"; do
     EXTRACT_OS_PARTITIONS
     EXTRACT_AVB_BINARIES
 
+    # A successful tar pass is not enough: create_work_dir consumes the system
+    # and vendor trees plus their ownership/SELinux metadata.
+    # Do not stamp this firmware as extracted when any of that contract is
+    # absent, otherwise a later build could continue with partial input.
+    for REQUIRED_PATH in \
+        "system" "vendor" "fs_config-system" "file_context-system" \
+        "fs_config-vendor" "file_context-vendor"; do
+        if [ ! -e "$FW_DIR/${MODEL}_${CSC}/$REQUIRED_PATH" ]; then
+            LOGE "Firmware extraction is incomplete: missing $REQUIRED_PATH"
+            exit 1
+        fi
+    done
+
     echo -n "$DOWNLOADED_FIRMWARE" > "$FW_DIR/${MODEL}_${CSC}/.extracted"
 
     if [ -n "$GITHUB_ACTIONS" ]; then
