@@ -632,11 +632,7 @@ while IFS= read -r f; do
 
     (
         LOG_STEP_IN "- Building $PARTITION.img"
-        if [[ "$PARTITION" == "system" || "$PARTITION" == "prism" || "$PARTITION" == "optics" ]]; then
-            FILESYSTEM_TYPE="ext4"
-        else
-            FILESYSTEM_TYPE="$TARGET_OS_FILE_SYSTEM"
-        fi
+        FILESYSTEM_TYPE="$TARGET_OS_FILE_SYSTEM"
         "$SRC_DIR/scripts/build_fs_image.sh" "$FILESYSTEM_TYPE" \
             -o "$TMP_DIR/$PARTITION.img" -S \
             "$WORK_DIR/$PARTITION" "$WORK_DIR/configs/file_context-$PARTITION" "$WORK_DIR/configs/fs_config-$PARTITION" || exit 1
