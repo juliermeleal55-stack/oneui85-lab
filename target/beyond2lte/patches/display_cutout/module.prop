@@ -1,0 +1,4 @@
+id=beyond2lte-display-cutout
+name=Galaxy S10+ display cutout geometry
+author=oneui85-lab
+description=Applies SM-G975F framework cutout geometry before EROFS images are built.
