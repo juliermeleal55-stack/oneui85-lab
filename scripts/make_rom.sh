@@ -107,6 +107,10 @@ trap 'PRINT_BUILD_OUTCOME' EXIT
 trap 'echo' INT
 
 if $BUILD_ROM; then
+    LOG_STEP_IN true "Verifying target configuration contract"
+    "$SRC_DIR/scripts/check_target_contract.sh" "$TARGET_CODENAME" || exit 1
+    LOG_STEP_OUT
+
     LOG_STEP_IN true "Verifying prebuilt resource contract"
     "$SRC_DIR/scripts/check_prebuilt_contract.sh" "$TARGET_CODENAME" || exit 1
     LOG_STEP_OUT

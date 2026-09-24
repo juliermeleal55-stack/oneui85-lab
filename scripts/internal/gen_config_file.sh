@@ -53,6 +53,16 @@ elif [ ! -f "$SRC_DIR/target/$1/config.sh" ]; then
 else
     source "$SRC_DIR/unica/configs/version.sh" || exit 1
     source "$SRC_DIR/target/$1/config.sh" || exit 1
+
+    # Platform defaults are part of the target contract. Load them before the
+    # target a second time so device values always take precedence over shared
+    # Exynos-family defaults.
+    if [ ! -f "$SRC_DIR/platform/$TARGET_PLATFORM/config.sh" ]; then
+        LOGE "File not found: platform/$TARGET_PLATFORM/config.sh"
+        exit 1
+    fi
+    source "$SRC_DIR/platform/$TARGET_PLATFORM/config.sh" || exit 1
+    source "$SRC_DIR/target/$1/config.sh" || exit 1
 fi
 
 SINGLE_SYSTEM_IMAGE="$TARGET_SINGLE_SYSTEM_IMAGE"

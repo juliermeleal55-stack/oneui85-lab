@@ -28,18 +28,19 @@ The project direction covers the Samsung Galaxy Note family. Device support is i
 
 ## Current build targets
 
-The `main` branch currently contains configurations and build-matrix entries for the following Exynos Galaxy Note10+ models.
+The `beyond2lte` branch contains configurations for the following Exynos devices. The automated build matrix targets the Galaxy S10+.
 
 | Device | Codename | Verified model |
 |---|---|---|
 | Galaxy Note10+ (Exynos) | `d2s` | `SM-N975F` |
 | Galaxy Note10+ 5G (Exynos) | `d2xks` | `SM-N976N` |
+| Galaxy S10+ (Exynos) | `beyond2lte` | `SM-G975F` |
 
 ## Support roadmap
 
 Additional Galaxy Note-series devices will be introduced progressively after their target configuration, partition layout, firmware compatibility, and device-specific patches have been implemented and validated.
 
-> **Current status:** only the two Note10+ targets listed above are configured in this branch. Do not flash a package on a model that is not explicitly listed in the target table or release notes.
+> **Current status:** only the targets listed above are configured in this branch. Do not flash a package on a model that is not explicitly listed in the target table or release notes.
 
 ## Porting and build approach
 
