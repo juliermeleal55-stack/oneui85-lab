@@ -114,10 +114,10 @@ if [[ "$(GET_FP_SENSOR_TYPE "$TARGET_FP_SENSOR_CONFIG")" == "optical" ]]; then
     done
 fi
 
-# S22 Ultra One UI 8 source already has a QHD display, but dynamic resolution
-# is disabled in CoreRune. Apply the companion framework and SecSettings patches
-# only when both source and target expose a QHD display and share this UI flow.
-if $SOURCE_HAS_QHD_DISPLAY && $TARGET_HAS_QHD_DISPLAY; then
+# Dynamic resolution must be enabled whenever the target exposes a WQHD panel.
+# The patches operate on the Android 16 source APKs and are deliberately gated
+# by the target capability, not by the source panel resolution.
+if $TARGET_HAS_QHD_DISPLAY; then
     LOG_STEP_IN "- Applying dynamic QHD resolution patches"
     DECODE_APK "system" "system/framework/framework.jar"
     DECODE_APK "system" "system/priv-app/SecSettings/SecSettings.apk"
