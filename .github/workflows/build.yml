@@ -78,6 +78,11 @@ jobs:
           java-version: '21'
           cache: 'gradle'
 
+      - name: Validate beyond2lte target contract
+        run: |
+          source ./buildenv.sh ${{ matrix.target }}
+          ./scripts/check_target_contract.sh "$TARGET_CODENAME"
+
       - name: Build dependencies
         run: |
           source ./buildenv.sh ${{ matrix.target }}
