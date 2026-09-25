@@ -121,6 +121,17 @@ if $TARGET_HAS_QHD_DISPLAY; then
     LOG_STEP_IN "- Applying dynamic QHD resolution patches"
     DECODE_APK "system" "system/framework/framework.jar"
     DECODE_APK "system" "system/priv-app/SecSettings/SecSettings.apk"
+
+    # Emit the actual source flag instructions into Actions logs for diagnosis
+    # if the resolution patch was authored for a different framework revision.
+    CORE_RUNE="$APKTOOL_DIR/system/framework/framework.jar/smali_classes6/com/samsung/android/rune/CoreRune.smali"
+    if [[ -f "$CORE_RUNE" ]]; then
+        LOG "- CoreRune resolution flag context:"
+        grep -n -B 10 -A 10 -E 'FW_DYNAMIC_RESOLUTION_CONTROL|FW_VRR_RESOLUTION_POLICY' "$CORE_RUNE" || true
+    else
+        LOGE "CoreRune.smali not found at expected path: $CORE_RUNE"
+    fi
+
     APPLY_PATCH "system" "system/framework/framework.jar" \
         "$SRC_DIR/unica/patches/product_feature/resolution/framework.jar/0001-Enable-dynamic-resolution-control.patch"
     APPLY_PATCH "system" "system/priv-app/SecSettings/SecSettings.apk" \
