@@ -1,25 +1,12 @@
 diff --git a/smali_classes6/com/samsung/android/rune/CoreRune.smali b/smali_classes6/com/samsung/android/rune/CoreRune.smali
-index f00127f..0301ee6 100644
 --- a/smali_classes6/com/samsung/android/rune/CoreRune.smali
 +++ b/smali_classes6/com/samsung/android/rune/CoreRune.smali
-@@ -2836,7 +2836,7 @@
- 
-     sput-boolean v4, Lcom/samsung/android/rune/CoreRune;->FW_MULTI_RESOLUTION_POLICY:Z
- 
+@@ -2836,1 +2836,1 @@
 -    sput-boolean v5, Lcom/samsung/android/rune/CoreRune;->FW_DYNAMIC_RESOLUTION_CONTROL:Z
 +    sput-boolean v4, Lcom/samsung/android/rune/CoreRune;->FW_DYNAMIC_RESOLUTION_CONTROL:Z
- 
-     const-string v2, "3"
- 
-@@ -2912,9 +2912,9 @@
- 
-     sput-boolean v3, Lcom/samsung/android/rune/CoreRune;->FW_VRR_REFRESH_RATE_MODE:Z
- 
+@@ -2912,1 +2912,1 @@
 -    sput-boolean v5, Lcom/samsung/android/rune/CoreRune;->FW_VRR_RESOLUTION_POLICY:Z
 +    sput-boolean v3, Lcom/samsung/android/rune/CoreRune;->FW_VRR_RESOLUTION_POLICY:Z
- 
+@@ -2915,1 +2915,1 @@
 -    sput-boolean v5, Lcom/samsung/android/rune/CoreRune;->FW_VRR_RESOLUTION_POLICY_FOR_SHELL_TRANSITION:Z
 +    sput-boolean v3, Lcom/samsung/android/rune/CoreRune;->FW_VRR_RESOLUTION_POLICY_FOR_SHELL_TRANSITION:Z
- 
-     sput-boolean v3, Lcom/samsung/android/rune/CoreRune;->FW_VRR_FIXED_REFRESH_RATE_PACKAGE:Z
- 
