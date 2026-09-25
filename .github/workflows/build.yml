@@ -110,10 +110,19 @@ jobs:
 
       - name: Create Swap Space
         run: |
-          sudo fallocate -l 12G /swapfile
-          sudo chmod 600 /swapfile
-          sudo mkswap /swapfile
-          sudo swapon /swapfile
+          # GitHub-hosted runners can already provide /swapfile. Reuse it when active
+          # instead of trying to recreate a busy file.
+          if sudo swapon --show=NAME --noheadings | grep -Fxq "/swapfile"; then
+            echo "/swapfile is already active; reusing existing swap."
+          else
+            if [ -e /swapfile ]; then
+              sudo rm -f /swapfile
+            fi
+            sudo fallocate -l 12G /swapfile
+            sudo chmod 600 /swapfile
+            sudo mkswap /swapfile
+            sudo swapon /swapfile
+          fi
           # Print swap status to the action log to verify it worked
           sudo swapon --show
 
