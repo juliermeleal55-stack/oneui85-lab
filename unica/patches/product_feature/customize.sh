@@ -114,30 +114,11 @@ if [[ "$(GET_FP_SENSOR_TYPE "$TARGET_FP_SENSOR_CONFIG")" == "optical" ]]; then
     done
 fi
 
-# Dynamic resolution must be enabled whenever the target exposes a WQHD panel.
-# The patches operate on the Android 16 source APKs and are deliberately gated
-# by the target capability, not by the source panel resolution.
+# Dynamic QHD resolution patch is temporarily disabled.
+# The current framework.jar patch does not match the source CoreRune.smali.
+# Keep TARGET_HAS_QHD_DISPLAY unchanged; only skip the incompatible patch block.
 if $TARGET_HAS_QHD_DISPLAY; then
-    LOG_STEP_IN "- Applying dynamic QHD resolution patches"
-    DECODE_APK "system" "system/framework/framework.jar"
-    DECODE_APK "system" "system/priv-app/SecSettings/SecSettings.apk"
-
-    # Emit the actual source flag instructions into Actions logs for diagnosis
-    # if the resolution patch was authored for a different framework revision.
-    CORE_RUNE="$APKTOOL_DIR/system/framework/framework.jar/smali_classes6/com/samsung/android/rune/CoreRune.smali"
-    if [[ -f "$CORE_RUNE" ]]; then
-        LOG "- CoreRune resolution flag context:"
-        grep -n -B 10 -A 10 -E 'FW_DYNAMIC_RESOLUTION_CONTROL|FW_VRR_RESOLUTION_POLICY' "$CORE_RUNE" || true
-    else
-        LOGE "CoreRune.smali not found at expected path: $CORE_RUNE"
-    fi
-
-    APPLY_PATCH "system" "system/framework/framework.jar" \
-        "$SRC_DIR/unica/patches/product_feature/resolution/framework.jar/0001-Enable-dynamic-resolution-control.patch"
-    APPLY_PATCH "system" "system/priv-app/SecSettings/SecSettings.apk" \
-        "$SRC_DIR/unica/patches/product_feature/resolution/SecSettings.apk/0001-Enable-dynamic-resolution-control.patch"
-    SET_FLOATING_FEATURE_CONFIG "SEC_FLOATING_FEATURE_COMMON_CONFIG_DYN_RESOLUTION_CONTROL" "WQHD,FHD,HD"
-    LOG_STEP_OUT
+    LOG "- Skipping dynamic QHD resolution patches (temporarily disabled)"
 fi
 if [[ "$SOURCE_HFR_MODE" != "$TARGET_HFR_MODE" ]]; then
     LOG_STEP_IN "- Applying HFR_MODE patches"
